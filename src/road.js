@@ -1,4 +1,4 @@
-export const ROAD = [
+export const ROAD_DATA_INIT = [
   {
     id: 0,
     road: 'S1',
@@ -190,4 +190,3 @@ export const ROAD = [
     accident4: 1,
   },
 ];
-localStorage.setItem('road', JSON.stringify(ROAD));

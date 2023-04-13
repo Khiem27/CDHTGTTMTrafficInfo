@@ -1,18 +1,28 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 // eslint-disable-next-line import/no-unresolved
+import { ROAD_DATA_INIT } from 'src/road';
 
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
 // sections
+import { useEffect } from 'react';
 import { AppNewsUpdate, AppWidgetSummary, AppCurrentSubject } from '../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
   const theme = useTheme();
-  const ROAD = JSON.parse(localStorage.getItem('road'));
+  let ROAD = ROAD_DATA_INIT;
+
+  useEffect(() => {
+    if (localStorage.getItem('road')) {
+      ROAD = JSON.parse(localStorage.getItem('road'));
+    } else {
+      localStorage.setItem('road', JSON.stringify(ROAD));
+    }
+  }, []);
 
   const sumAccident1 = ROAD.reduce((acc, cur) => acc + Number(cur.accident1), 0);
   const sumAccident2 = ROAD.reduce((acc, cur) => acc + Number(cur.accident2), 0);
