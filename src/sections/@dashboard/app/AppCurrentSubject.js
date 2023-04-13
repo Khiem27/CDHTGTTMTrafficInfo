@@ -1,36 +1,11 @@
 import PropTypes from 'prop-types';
-import ReactApexChart from 'react-apexcharts';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Card, CardHeader } from '@mui/material';
+import GoogleMapReact from 'google-map-react';
+
 // components
-import { useChart } from '../../../components/chart';
-
-// ----------------------------------------------------------------------
-
-const CHART_HEIGHT = 392;
-
-const LEGEND_HEIGHT = 72;
-
-const StyledChartWrapper = styled('div')(({ theme }) => ({
-  height: CHART_HEIGHT,
-  marginTop: theme.spacing(2),
-  '& .apexcharts-canvas svg': {
-    height: CHART_HEIGHT,
-  },
-  '& .apexcharts-canvas svg,.apexcharts-canvas foreignObject': {
-    overflow: 'visible',
-  },
-  '& .apexcharts-legend': {
-    height: LEGEND_HEIGHT,
-    alignContent: 'center',
-    position: 'relative !important',
-    borderTop: `solid 1px ${theme.palette.divider}`,
-    top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`,
-  },
-}));
-
-// ----------------------------------------------------------------------
+import { useState, useEffect } from 'react';
 
 AppCurrentSubject.propTypes = {
   title: PropTypes.string,
@@ -40,28 +15,48 @@ AppCurrentSubject.propTypes = {
   chartLabels: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default function AppCurrentSubject({ title, subheader, chartData, chartColors, chartLabels, ...other }) {
-  const chartOptions = useChart({
-    stroke: { width: 2 },
-    fill: { opacity: 0.48 },
-    legend: { floating: true, horizontalAlign: 'center' },
-    xaxis: {
-      categories: chartLabels,
-      labels: {
-        style: {
-          colors: chartColors,
-        },
-      },
-    },
+export default function AppCurrentSubject({ title, subheader, ...other }) {
+  const [coords, setCoords] = useState({
+    lat: 10.8124974,
+    lng: 106.6161661,
   });
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCoords({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+  }, []);
+  const AnyReactComponent = ({ text }) => <div>{text}</div>;
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      <StyledChartWrapper dir="ltr">
-        <ReactApexChart type="radar" series={chartData} options={chartOptions} height={340} />
-      </StyledChartWrapper>
+      <div style={{ marginTop: '20px', height: '500px', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyCbGO-5TBL5L65pu-wQJ7PEoZi2xkzkpqI' }}
+          defaultCenter={coords}
+          defaultZoom={14}
+          layerTypes={['TrafficLayer', 'TransitLayer']}
+        >
+          <AnyReactComponent
+            lat={coords.lat}
+            lng={coords.lng}
+            text={
+              <div style={{ color: 'red', fontSize: '20px' }}>
+                <img
+                  style={{ width: '30px', height: '30px', transform: 'translate(-50%, -50%)' }}
+                  src="../assets/icons/pngegg.png"
+                  alt="pngegg"
+                  border="0"
+                />
+              </div>
+            }
+          />
+        </GoogleMapReact>
+      </div>
     </Card>
   );
 }

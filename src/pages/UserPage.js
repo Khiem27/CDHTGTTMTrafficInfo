@@ -149,7 +149,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> User | Minimal UI </title>
+        <title> User | Tra cứu tuyến đường nguy hiểm </title>
       </Helmet>
 
       <Container>

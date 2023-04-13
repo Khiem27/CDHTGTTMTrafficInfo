@@ -5,7 +5,7 @@ import { Grid, Button, Container, Stack, Typography } from '@mui/material';
 import Iconify from '../components/iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
-import POSTS from '../_mock/blog';
+import POSTS, { ADDRESS } from '../_mock/blog';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ export default function BlogPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Blog | Minimal UI </title>
+        <title> Dashboard: Blog | Tra cứu tuyến đường nguy hiểm </title>
       </Helmet>
 
       <Container>
@@ -41,7 +41,7 @@ export default function BlogPage() {
 
         <Grid container spacing={3}>
           {POSTS.map((post, index) => (
-            <BlogPostCard key={post.id} post={post} index={index} />
+            <BlogPostCard key={post.id} post={ADDRESS} index={index} />
           ))}
         </Grid>
       </Container>

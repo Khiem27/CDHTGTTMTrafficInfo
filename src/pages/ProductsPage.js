@@ -23,7 +23,7 @@ export default function ProductsPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Products | Minimal UI </title>
+        <title> Dashboard: Products | Tra cứu tuyến đường nguy hiểm </title>
       </Helmet>
 
       <Container>

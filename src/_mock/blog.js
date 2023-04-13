@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/vi';
 
 // ----------------------------------------------------------------------
 
@@ -42,6 +42,74 @@ const posts = [...Array(23)].map((_, index) => ({
     name: faker.name.fullName(),
     avatarUrl: `/assets/images/avatars/avatar_${index + 1}.jpg`,
   },
+  address: faker.address.streetAddress(),
 }));
 
+export const ADDRESS = [
+  {
+    id: 0,
+    address: 'S1',
+    district: 'Tân Phú',
+    city: 'Hồ Chí Minh',
+    country: 'Việt Nam',
+    lat: 10.795,
+    lng: 106.65,
+    author: {
+      name: faker.name.fullName(),
+      avatarUrl: `/assets/images/avatars/avatar_${0 + 1}.jpg`,
+    },
+  },
+  {
+    id: 1,
+    address: '101 Lê Hữu Trác',
+    district: 'Sơn Trà',
+    city: 'Đà Nẵng',
+    country: 'Việt Nam',
+    lat: 16.0648,
+    lng: 108.2344,
+    author: {
+      name: faker.name.fullName(),
+      avatarUrl: `/assets/images/avatars/avatar_${1 + 1}.jpg`,
+    },
+  },
+  {
+    id: 2,
+    address: '123 Phan Đăng Lưu',
+    district: 'Hải Châu',
+    city: 'Đà Nẵng',
+    country: 'Việt Nam',
+    lat: 16.0673,
+    lng: 108.2121,
+    author: {
+      name: faker.name.fullName(),
+      avatarUrl: `/assets/images/avatars/avatar_${2 + 1}.jpg`,
+    },
+  },
+  {
+    id: 3,
+    address: '15 Nguyễn Chánh',
+    district: 'Cầu Giấy',
+    city: 'Hà Nội',
+    country: 'Việt Nam',
+    lat: 21.0327,
+    lng: 105.7939,
+    author: {
+      name: faker.name.fullName(),
+      avatarUrl: `/assets/images/avatars/avatar_${3 + 1}.jpg`,
+    },
+  },
+  {
+    id: 4,
+    address: '35 Lý Thái Tổ',
+    district: 'Hoàn Kiếm',
+    city: 'Hà Nội',
+    country: 'Việt Nam',
+    lat: 21.0279,
+    lng: 105.8524,
+    author: {
+      name: faker.name.fullName(),
+      avatarUrl: `/assets/images/avatars/avatar_${4 + 1}.jpg`,
+    },
+  },
+];
 export default posts;

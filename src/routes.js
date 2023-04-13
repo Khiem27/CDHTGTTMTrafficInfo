@@ -9,6 +9,8 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import ViewAllRoad from './pages/ViewAllRoad';
+import AddRoad from './sections/@dashboard/app/AddRoad';
 
 // ----------------------------------------------------------------------
 
@@ -21,8 +23,19 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        {
+          path: 'blog/:id',
+          element: <BlogPage />,
+        },
+        {
+          path: 'all-blog',
+          element: <ViewAllRoad />,
+        },
+
+        {
+          path: 'contributions',
+          element: <AddRoad />,
+        },
       ],
     },
     {

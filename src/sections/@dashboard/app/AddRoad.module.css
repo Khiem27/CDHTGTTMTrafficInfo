@@ -1,0 +1,28 @@
+.button {
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 20px;
+  background-color: #4caf50;
+  background-image: linear-gradient(to right, #4caf50, #8bc34a);
+  background-image: -webkit-linear-gradient(to right, #4caf50, #8bc34a);
+  background-image: -moz-linear-gradient(to right, #4caf50, #8bc34a);
+  background-image: -o-linear-gradient(to right, #4caf50, #8bc34a);
+  background-image: -ms-linear-gradient(to right, #4caf50, #8bc34a);
+}
+
+.button:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #4caf50;
+  transform: translateY(4px);
+}
+
+.button:focus {
+  outline: none;
+}
