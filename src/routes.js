@@ -11,6 +11,7 @@ import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import ViewAllRoad from './pages/ViewAllRoad';
 import AddRoad from './sections/@dashboard/app/AddRoad';
+import Navigation from './pages/Navigation';
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +36,11 @@ export default function Router() {
         {
           path: 'contributions',
           element: <AddRoad />,
+        },
+
+        {
+          path: 'navigation',
+          element: <Navigation />,
         },
       ],
     },

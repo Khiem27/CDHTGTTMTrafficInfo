@@ -36,7 +36,7 @@ export default function AppCurrentSubject({ title, subheader, ...other }) {
 
       <div style={{ marginTop: '20px', height: '500px', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCbGO-5TBL5L65pu-wQJ7PEoZi2xkzkpqI' }}
+          bootstrapURLKeys={{ key: 'AIzaSyBfrr68LOR85piDHsa6trV9o5pJwB6gVgU' }}
           defaultCenter={coords}
           defaultZoom={14}
           layerTypes={['TrafficLayer', 'TransitLayer']}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Box, Container, Grid, TextField, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import styles from './AddRoad.module.css';
 
 AddRoad.propTypes = {};
@@ -9,14 +10,32 @@ AddRoad.propTypes = {};
 function AddRoad() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const roadInfo = {
-      ...data,
-      postedAt: new Date().toISOString(),
-      image: `/assets/images/covers/cover_${Math.floor(Math.random() * 24) + 1}.jpg`,
-    };
-    const road = JSON.parse(localStorage.getItem('road'));
-    road.push(roadInfo);
-    localStorage.setItem('road', JSON.stringify(road));
+    const title = `${data.road}, ${data.district}, ${data.city}`;
+    let lat;
+    let lng;
+    geocodeByAddress(title)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat: latitude, lng: longitude }) => {
+        lat = latitude;
+        lng = longitude;
+        console.log('Successfully got latitude and longitude', { lat, lng });
+
+        const roadInfo = {
+          ...data,
+          postedAt: new Date().toISOString(),
+          image: `/assets/images/covers/cover_${Math.floor(Math.random() * 24) + 1}.jpg`,
+          position: {
+            lat,
+            lng,
+          },
+        };
+        console.log(roadInfo);
+        const road = JSON.parse(localStorage.getItem('road'));
+        road.push(roadInfo);
+        localStorage.setItem('road', JSON.stringify(road));
+        // Thông báo khi thành công
+        window.confirm('Thêm đoạn đường thành công');
+      });
   };
 
   return (

@@ -22,6 +22,12 @@ const navConfig = [
     path: '/dashboard/contributions',
     icon: icon('ic_blog'),
   },
+
+  {
+    title: 'Dẫn đường',
+    path: '/dashboard/navigation',
+    icon: icon('ic_lock'),
+  },
 ];
 
 export default navConfig;

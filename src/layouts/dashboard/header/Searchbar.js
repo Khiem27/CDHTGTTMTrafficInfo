@@ -332,7 +332,7 @@ export default function Searchbar() {
                   {coords ? (
                     <div style={{ height: '500px', width: '100%' }}>
                       <GoogleMapReact
-                        bootstrapURLKeys={{ key: 'AIzaSyCbGO-5TBL5L65pu-wQJ7PEoZi2xkzkpqI' }}
+                        bootstrapURLKeys={{ key: 'AIzaSyBfrr68LOR85piDHsa6trV9o5pJwB6gVgU' }}
                         defaultZoom={15}
                         center={coords}
                       >
