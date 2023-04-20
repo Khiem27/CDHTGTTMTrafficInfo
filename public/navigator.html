@@ -50,9 +50,13 @@
         center: [106.61861, 10.81267],
         zoom: 13,
       });
-      const markerLocations = ROADS;
+      const markerLocations = ROADS ?? [
+        [106.61861, 10.81267],
+        [106.61804, 10.80452],
+        [106.62973, 10.82024],
+      ];
 
-      markerLocations.forEach((location) => {
+      markerLocations?.forEach((location) => {
         // create a new HTML element for the marker
         const el = document.createElement('div');
         el.className = 'marker';
